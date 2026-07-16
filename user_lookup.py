@@ -9,8 +9,8 @@ def get_user():
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
     # look up a user by their username from the users table
-    query = f"SELECT * FROM users WHERE username = '{username}'"
-    cursor.execute(query)
+    query = "SELECT * FROM users WHERE username = ?"
+    cursor.execute(query, (username,))
     user = cursor.fetchone()
     conn.close()
     return str(user)
