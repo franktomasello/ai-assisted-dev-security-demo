@@ -6,3 +6,6 @@ def get_user_by_username(username):
     # look up a user by their username from the users table
     query = f"SELECT * FROM users WHERE username = '{username}'"
     cursor.execute(query)
+    user = cursor.fetchone()
+    conn.close()
+    return user
